@@ -225,3 +225,12 @@ SETUP_CLASS = anaconda_plugin.ConfigAnaconda
 # from_port = 80
 # to_port = 80
 # cidr_ip = 18.0.0.0/24
+
+[permission www]
+from_port = 5000
+to_port = 5000
+
+[permission www]
+from_port = 8989
+to_port = 8989
+

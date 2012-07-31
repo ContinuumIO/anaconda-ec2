@@ -9,7 +9,7 @@ Installation
 Install StarCluster
 
 In .starcluster:
-   move and renmae config.anaconda to config
+   move and rename config.anaconda to config
    move anaconda_plugin.py to .startcluster/plugins
 
 
