@@ -24,10 +24,10 @@ class ConfigAnaconda(ClusterSetup):
         Create a disco config file that includes all the nodes and restart disco.
         """
         remote_nodes = filter(lambda n: not n.is_master(), nodes)
-        names = map(lambda n: n.alias, remote_nodes)
-        recs = map(lambda x: ',\n["%s", "1"]' % x, names)
+        #names = map(lambda n: n.alias, remote_nodes)
+        recs = map(lambda n: ',\n["%s", "%d"]' % (n.alias, n.num_processors), remote_nodes)
         body = reduce(lambda x, y: x + y, recs, '')
-        dconfig = '[["master", "1"]' + body + ']'
+        dconfig = '[["master", "%d"]' % (master.num_processors,) + body + ']'
 
         cfd = master.ssh.remote_file(DISCO_CONFIG)
         cfd.write(dconfig)
@@ -42,8 +42,8 @@ class ConfigAnaconda(ClusterSetup):
             """
             remote_nodes = filter(lambda n: not n.is_master(), nodes)
             names = map(lambda n: n.alias, remote_nodes)
-            recs = map(lambda x: ',\n["%s", "1"]' % x, names)
-            body = reduce(lambda x, y: x + y, recs, '')
+            #recs = map(lambda n: ',\n["%s", "%d"]' % (n.alias, n.num_processors), remote_nodes)
+            #body = reduce(lambda x, y: x + y, recs, '')
             #master.ssh.execute("sudo su - disco;")
             master.ssh.execute("/etc/init.d/disco stop")
             
