@@ -64,7 +64,7 @@ KEYNAME = anacondakey
 CLUSTER_SIZE = 2
 
 # create the following user on the cluster
-CLUSTER_USER = disco 
+CLUSTER_USER = a_user_not_named_disco 
 
 # optionally specify shell (defaults to bash)
 # (options: tcsh, zsh, csh, bash, ksh)
